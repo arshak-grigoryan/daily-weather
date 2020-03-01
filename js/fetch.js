@@ -18,7 +18,6 @@ export function closeMessage(){
     document.body.style.overflow = 'auto';
 }
 function autoGeo(lat,lon,x){
-    console.log(55555555555)
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
         .then(data => {
             if(data.status !== 200){
@@ -34,12 +33,13 @@ function autoGeo(lat,lon,x){
         })
         .catch(err => console.error('Oops!', err))  
 }
+let x;
 export function getWeatherAuto(){
     navigator.geolocation.getCurrentPosition(function(position) {
         let lat = position.coords.latitude.toFixed(5);
         let lon = position.coords.longitude.toFixed(5);
-        let x = setInterval(()=>autoGeo(lat,lon,x),1000);
-        let y = setTimeout(()=>clearInterval(x),5000)
+        x = setInterval(()=>autoGeo(lat,lon,x),1000);
+        let y = setTimeout(()=>clearInterval(x),15000)
      });
 }
 
@@ -52,6 +52,7 @@ export function getWeather(){
             document.getElementById('errWrapper').style.display = 'block'
             throw Error(data.statusText);
         } else{
+            setTimeout(()=>clearInterval(x),0)
             return data.json()
         }
     })
