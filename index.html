@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="#">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div id="errWrapper">
+        <div id="error">
+            <div id="message">There is nothing found. Please check city name and try again.</div>
+            <div id="errbtn">OK</div>
+        </div>
+    </div>
+    <div id="wrapper">
+        <form>
+            <input type="text" id="citySearch" placeholder="City name">
+            <div id="sendCity" >Search</div>
+        </form>
+        </form>      
+        <div id="wmain">
+            <div id="city-country"></div>
+            <div id="wmt">
+                <div>
+                    <img id="icon" src="" alt="" width="75">
+                </div>
+                <div id="main-temp"></div>
+                <div id="under-main-temp">
+                    <div id="temp-max"></div>
+                    <div id="temp-min"></div>
+                </div>
+            </div>
+            <div id="main"></div>
+            <div id="uptime"></div>
+        </div>
+        <div id="detailsWrapper">
+            <div id="detailsText">Weather now</div>
+            <div id="detailsMain">
+                <div>
+                    <div>
+                        <i class="fas fa-thermometer-half"></i>  
+                    </div>
+                    <div class="prop">Feels like</div>
+                    <div id='feelsLikeVal' class="value"></div>
+                </div>
+                <div>
+                    <div>
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="prop">Wind</div>
+                    <div id='windSpeedVal' class="value"></div>
+                </div>
+                <div>
+                    <div>
+                        <i class="fas fa-tint"></i>                    
+                    </div>
+                    <div class="prop">Humidity</div>
+                    <div id='humidityVal' class="value"></div>
+                </div>
+                <div>
+                    <div>
+                        <i class="fas fa-cloud"></i>                    
+                    </div>
+                    <div class="prop">Cloudiness</div>
+                    <div id='cloudinessVal' class="value"></div>
+                </div>
+                <div>
+                    <div>
+                        <i class="far fa-eye"></i>                    
+                    </div>
+                    <div class="prop">Visibility</div>
+                    <div id='visibilityVal' class="value"></div>
+                </div>
+                <div>
+                    <div>
+                        <i class="fas fa-tachometer-alt"></i>                    
+                    </div>
+                    <div class="prop">Pressure</div>
+                    <div id='pressureVal' class="value"></div>
+                </div>
+            </div>
+        </div>
+        <div id="wrapSunDetails">
+            <div id="sunDetailsText">Day duration</div>
+            <div id="wrapRiseSet">
+                <div id="sunRise">
+                    <div>
+                        <i class="fas fa-sun"></i>
+                    </div>
+                    <div class="prop">Day</div>
+                    <div id='dayDurVal' class="value"></div>
+                </div>
+                <div id="sunSet">
+                    <div>
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <div class="prop">Night</div>
+                    <div id='nightDurVal' class="value"></div>
+                </div>
+            </div>
+        </div>
+        <div id="wrapDayDetails">
+            <div id="sunDetails">Sun details</div>
+            <div id="wrapriseset">
+                <div id="wrapSunrise">
+                    <div id="sunrise">Sunrise</div>
+                    <div id="sunriseimg">
+                        <div class="circle">
+                            <div class="triangle-up"></div>
+                        </div>
+                        <div class="line-1"></div>
+                        <div class="line-2"></div>
+                        <div class="line-3"></div>
+                        <div class="line-4"></div>
+                        <div class="line-5"></div>
+                        <div class="line-6"></div>
+                        <div class="line-7"></div>
+                        <div class="line-8"></div>
+                    </div>
+                </div>
+                <div id="wrapSunset">
+                    <div id="sunset">Sunset</div>
+                    <div id="sunsetimg">
+                        <div class="circle">
+                            <div class="triangle-down"></div>
+                        </div>
+                        <div class="line-1"></div>
+                        <div class="line-2"></div>
+                        <div class="line-3"></div>
+                        <div class="line-4"></div>
+                        <div class="line-5"></div>
+                        <div class="line-6"></div>
+                        <div class="line-7"></div>
+                        <div class="line-8"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="index.js"></script>
+</body>
+</html>

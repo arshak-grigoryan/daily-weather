@@ -1,0 +1,84 @@
+#wmain{
+    color: white;
+    padding: 5px 0;
+}
+#city-country{
+    font-size: 30px;
+    padding: 5px 0;
+}
+#wmt{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 0;
+}
+#icon{
+    margin-right: 1%;
+    width: 75px;
+    height: 75px;
+}
+#main-temp{
+    font-size: 60px;
+    display: flex;
+}
+#main-temp > sup{
+    font-size: 25px;
+}
+#main-temp > span{
+    font-size: 50px;
+}
+#under-main-temp {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+}
+#under-main-temp > div{
+    font-size: 18px;
+    position: relative;
+    display: flex;
+    justify-content:flex-end;
+}
+#under-main-temp > div > sup{
+    font-size: 6px;
+}
+#under-main-temp > div > span{
+    font-size: 12px;
+}
+#temp-max{
+    margin-bottom: 11px;
+}
+#temp-max::after{
+    content: '';
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    width: 100%;
+    height: 1px;
+    margin-bottom: 5px;
+    background-color: white;
+}
+#main{
+    font-size: 20px;
+}
+#uptime{
+    padding: 10px 0;
+    font-size: 12px;
+}
+#main-wind{
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#main-wind > div{
+    font-size: 12px;
+    padding: 12px 0;
+    display: flex;
+}
+#feels-like{
+    position: relative;
+}
+#feels-like > sup{
+    position: absolute;
+}

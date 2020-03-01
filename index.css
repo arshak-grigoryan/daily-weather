@@ -1,0 +1,70 @@
+@import './css/form.css';
+@import './css/weatherMain.css';
+@import './css/sunDetails.css';
+@import './css/weatherNow.css';
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+#wrapper{
+    width: 100%;
+    padding-top: 20px;
+}
+#wrapper > div{
+    display: none;
+}
+body{
+    /* background: linear-gradient(to bottom, #136a8a, #267871); */
+    background-color: #136a8a;
+}
+#wrapper{
+    text-align: center;
+}
+#errWrapper{
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, .4);
+}
+#error{
+    display: inline-block;
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, .4);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .3);;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, .9);
+    font-size: 14px;
+    text-align: center;
+    animation-name: appear;
+    animation-duration: .2s;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+#message{
+    color: rgba(0, 0, 0, .7);
+}
+#errbtn{
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-top: 15px;
+    color: white;
+    background-color: rgba(19, 106, 138,.9);
+    text-align: center;
+    cursor: pointer;
+}
+@keyframes appear{
+    from{top: 0;}
+    to{top: 50%;}
+}
