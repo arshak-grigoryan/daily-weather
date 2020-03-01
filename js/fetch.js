@@ -52,7 +52,7 @@ export function getWeather(){
             document.getElementById('errWrapper').style.display = 'block'
             throw Error(data.statusText);
         } else{
-//             setTimeout(()=>clearInterval(x),0)
+            setTimeout(()=>clearInterval(x),0)
             return data.json()
         }
     })
