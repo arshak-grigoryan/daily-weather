@@ -40,7 +40,7 @@ export function getWeatherAuto(){
         let lat = position.coords.latitude.toFixed(5);
         let lon = position.coords.longitude.toFixed(5);
         let x = setInterval(()=>autoGeo(lat,lon,x),1000);
-        let y = setTimeout(clearInterval(x),5000)
+        let y = setTimeout(()=>clearInterval(x),5000)
      });
 }
 
