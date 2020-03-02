@@ -2,6 +2,7 @@
 @import './css/weatherMain.css';
 @import './css/sunDetails.css';
 @import './css/weatherNow.css';
+@import './css/loader.css';
 
 *{
     box-sizing: border-box;

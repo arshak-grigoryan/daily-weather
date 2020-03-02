@@ -28,6 +28,7 @@ function autoGeo(lat,lon,x){
             }
         })
         .then(data => {
+            document.getElementsByClassName('lds-ripple')[0].style.display = 'none';
             show()()
             fillData(data)
         })
@@ -44,6 +45,7 @@ export function getWeatherAuto(){
 }
 
 export function getWeather(){
+    document.getElementsByClassName('lds-ripple')[0].style.display = 'inline-block';
     let city = document.getElementById('citySearch').value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
     .then(data => {
@@ -57,6 +59,7 @@ export function getWeather(){
         }
     })
     .then(data => {
+        document.getElementsByClassName('lds-ripple')[0].style.display = 'none';
         show()()
         fillData(data)
     })
