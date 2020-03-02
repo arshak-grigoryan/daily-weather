@@ -51,7 +51,7 @@ export function getWeatherAuto(){
                 document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
                 clearInterval(x)
             }
-        },15000)
+        },10000)
      });
 }
 
