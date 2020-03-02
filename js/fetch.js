@@ -46,6 +46,7 @@ export function getWeatherAuto(){
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
         let y = setTimeout(()=>{
             if(bool){
+                document.getElementById('loader').style.display = 'none';
                 document.getElementById('errWrapper').style.display = 'block';
                 document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
                 clearInterval(x)
