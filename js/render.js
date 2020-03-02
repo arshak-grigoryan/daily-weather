@@ -1,3 +1,16 @@
+export function showContent(){
+    let counter = 0;
+    return function showback(){
+        if(counter === 0){
+            let arr = document.getElementById('wrapper').children
+            for(let i = 1; i < arr.length; i++){
+                arr[i].style.display = 'block'
+            }
+            counter++
+        }
+    }
+}
+
 function getSpan(str){
     return ` <span style="font-size:14px">${str}</span> `
 }

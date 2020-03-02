@@ -1,4 +1,5 @@
-import { getWeatherAuto, getWeather, closeMessage } from './js/fetch.js';
+import { getWeatherAuto, getWeather } from './js/fetch.js';
+import { closeMessage } from './js/errorMessage.js';
 
 document.getElementById('sendCity').addEventListener('click', getWeather);
 

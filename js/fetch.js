@@ -1,35 +1,13 @@
 import { fillData } from './fillData.js';
+import { showContent } from './render.js';
+import { closeMessage, showMessage } from './errorMessage.js';
 
-function showContent(){
-    let counter = 0;
-    return function showback(){
-        if(counter === 0){
-            let arr = document.getElementById('wrapper').children
-            for(let i = 1; i < arr.length; i++){
-                arr[i].style.display = 'block'
-            }
-            counter++
-        }
-    }
+function hideLoader(){
+    document.getElementById('loader').style.display = 'none';
 }
 
-export function closeMessage(){
-    document.getElementById('errWrapper').style.display = 'none';
-    document.body.style.overflow = 'auto';
-}
-
-function showMessage(bool){
-    document.getElementById('errWrapper').style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    if(bool === true){
-        document.getElementById('message').textContent = 'Can not detect your location. Use search for finding city.'
-    } else{
-        document.getElementById('message').textContent = 'There is nothing found. Please check city name and try again.'        
-    }
-}
-
-let bool = true
-let bool2 = true
+let autoGeoStateForMessage = true;
+let autoRequest,cancelAutoRequest;
 
 function autoGeo(lat,lon,x){
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${'lat'}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
@@ -38,48 +16,48 @@ function autoGeo(lat,lon,x){
                 throw Error(data.statusText);
             } else{
                 debugger
-                clearInterval(x)
+                clearInterval(autoRequest,0)
+                hideLoader()
+                autoGeoStateForMessage = false
+                showContent()()
                 return data.json()
             }
         })
         .then(data => {
-            document.getElementById('loader').style.display = 'none';
-            bool = false
-            showContent()()
             fillData(data)
+            clearTimeout(cancelAutoRequest,0)
         })
         .catch(err => console.error('Oops!', err))  
 }
-let x;
 export function getWeatherAuto(){
     navigator.geolocation.getCurrentPosition(function(position) {
         let lat = position.coords.latitude.toFixed(5);
         let lon = position.coords.longitude.toFixed(5);
-        x = setInterval(()=>autoGeo(lat,lon,x),1000);
-        setTimeout(()=>{
-            if(bool2){
-            if(bool){
-                document.getElementById('loader').style.display = 'none';
-                showMessage(bool)
-                clearInterval(x)
-            }
-            }
+        autoRequest = setInterval(()=>autoGeo(lat,lon,autoRequest),1000);
+        cancelAutoRequest = setTimeout(()=>{
+            // if(autoGeoStateForMessage){
+                hideLoader()
+                showMessage(autoGeoStateForMessage)
+                clearInterval(autoRequest)
+            // }
         },10000)
      });
 }
 
 export function getWeather(){
-    // document.getElementById('loader').style.display = 'block';
     let city = document.getElementById('citySearch').value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
     .then(data => {
-        document.getElementById('loader').style.display = 'none'
-        clearInterval(x)
-        bool2 = false
         if(data.status !== 200){
-            showMessage(false)
+            hideLoader()
+            clearInterval(autoRequest,0)
+            clearTimeout(cancelAutoRequest,0)
+            showMessage(autoGeoStateForMessage = false)
             throw Error(data.statusText);
         } else{
+            hideLoader()
+            clearInterval(autoRequest,0)
+            clearTimeout(cancelAutoRequest,0)
             return data.json()
         }
     })
