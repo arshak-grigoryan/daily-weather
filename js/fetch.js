@@ -17,17 +17,21 @@ export function closeMessage(){
     document.getElementById('errWrapper').style.display = 'none';
     document.body.style.overflow = 'auto';
 }
+let bool = true 
 function autoGeo(lat,lon,x){
         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
         .then(data => {
             if(data.status !== 200){
                 throw Error(data.statusText);
             } else{
+                debugger
+                bool = false
                 clearInterval(x)
                 return data.json()
             }
         })
         .then(data => {
+
             document.getElementById('loader').style.display = 'none';
             show()()
             fillData(data)
@@ -41,9 +45,11 @@ export function getWeatherAuto(){
         let lon = position.coords.longitude.toFixed(5);
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
         let y = setTimeout(()=>{
-            document.getElementById('errWrapper').style.display = 'block';
-            document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
-            clearInterval(x)
+            if(bool){
+                document.getElementById('errWrapper').style.display = 'block';
+                document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
+                clearInterval(x)
+            }
         },15000)
      });
 }
