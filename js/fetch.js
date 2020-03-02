@@ -25,14 +25,13 @@ function autoGeo(lat,lon,x){
                 throw Error(data.statusText);
             } else{
                 debugger
-                bool = false
                 clearInterval(x)
                 return data.json()
             }
         })
         .then(data => {
-
             document.getElementById('loader').style.display = 'none';
+            bool = false
             show()()
             fillData(data)
         })
@@ -46,7 +45,7 @@ export function getWeatherAuto(){
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
         setTimeout(()=>{
             if(bool){
-                document.getElementById('loader').style.display = 'none';
+                // document.getElementById('loader').style.display = 'none';
                 document.getElementById('errWrapper').style.display = 'block';
                 document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
                 clearInterval(x)
