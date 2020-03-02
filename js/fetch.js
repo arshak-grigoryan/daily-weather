@@ -10,7 +10,7 @@ let autoGeoStateForMessage = true;
 let autoRequest,cancelAutoRequest;
 
 function autoGeo(lat,lon,x){
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${'lat'}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
         .then(data => {
             if(data.status !== 200){
                 throw Error(data.statusText);
