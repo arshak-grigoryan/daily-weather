@@ -42,10 +42,6 @@ export function getWeatherAuto(){
 }
 
 export function getWeather(){
-    // console.log(e)
-    // if(e.key === 'Enter'){
-        // e.event.preventDefault()
-        // console.log(e.key)
     let city = document.getElementById('citySearch').value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
     .then(data => {
@@ -67,5 +63,4 @@ export function getWeather(){
         fillData(data)
     })
     .catch(err => console.error('Oops!', err))
-// }
 }
