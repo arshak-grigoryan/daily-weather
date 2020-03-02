@@ -15,7 +15,6 @@ function autoGeo(lat,lon,x){
             if(data.status !== 200){
                 throw Error(data.statusText);
             } else{
-                debugger
                 clearInterval(autoRequest,0)
                 hideLoader()
                 autoGeoStateForMessage = false
