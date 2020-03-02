@@ -1,6 +1,6 @@
 import { fillData } from './fillData.js';
 import { showContent } from './render.js';
-import { closeMessage, showMessage } from './errorMessage.js';
+import { showMessage } from './errorMessage.js';
 
 function hideLoader(){
     document.getElementById('loader').style.display = 'none';
@@ -35,11 +35,9 @@ export function getWeatherAuto(){
         let lon = position.coords.longitude.toFixed(5);
         autoRequest = setInterval(()=>autoGeo(lat,lon,autoRequest),1000);
         cancelAutoRequest = setTimeout(()=>{
-            // if(autoGeoStateForMessage){
                 hideLoader()
                 showMessage(autoGeoStateForMessage)
                 clearInterval(autoRequest)
-            // }
         },10000)
      });
 }
