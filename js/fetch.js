@@ -44,7 +44,7 @@ export function getWeatherAuto(){
         let lat = position.coords.latitude.toFixed(5);
         let lon = position.coords.longitude.toFixed(5);
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
-        let y = setTimeout(()=>{
+        setTimeout(()=>{
             if(bool){
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('errWrapper').style.display = 'block';
