@@ -28,7 +28,7 @@ function autoGeo(lat,lon,x){
             }
         })
         .then(data => {
-            document.getElementsByClassName('lds-ripple')[0].style.display = 'none';
+            document.getElementById('loader').style.display = 'none';
             show()()
             fillData(data)
         })
@@ -40,12 +40,16 @@ export function getWeatherAuto(){
         let lat = position.coords.latitude.toFixed(5);
         let lon = position.coords.longitude.toFixed(5);
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
-        let y = setTimeout(()=>clearInterval(x),15000)
+        let y = setTimeout(()=>{
+            document.getElementById('errWrapper').style.display = 'block';
+            document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
+            clearInterval(x)
+        },15000)
      });
 }
 
 export function getWeather(){
-    document.getElementsByClassName('lds-ripple')[0].style.display = 'inline-block';
+    document.getElementById('loader').style.display = 'block';
     let city = document.getElementById('citySearch').value;
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
     .then(data => {
@@ -59,7 +63,7 @@ export function getWeather(){
         }
     })
     .then(data => {
-        document.getElementsByClassName('lds-ripple')[0].style.display = 'none';
+        document.getElementById('loader').style.display = 'none';
         show()()
         fillData(data)
     })
