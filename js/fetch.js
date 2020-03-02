@@ -19,7 +19,7 @@ export function closeMessage(){
 }
 let bool = true 
 function autoGeo(lat,lon,x){
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
+        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${'lat'}&lon=${lon}&appid=0effd2db9fd35814bdee882537232e55&cnt=7`)
         .then(data => {
             if(data.status !== 200){
                 throw Error(data.statusText);
@@ -45,9 +45,9 @@ export function getWeatherAuto(){
         x = setInterval(()=>autoGeo(lat,lon,x),1000);
         setTimeout(()=>{
             if(bool){
-                // document.getElementById('loader').style.display = 'none';
+                document.getElementById('loader').style.display = 'none';
                 document.getElementById('errWrapper').style.display = 'block';
-                document.getElementById('message').textContent = 'Nothing found. Use search for finding city'
+                document.getElementById('message').textContent = 'Nothing found. Use search for finding city.'
                 clearInterval(x)
             }
         },10000)
@@ -62,6 +62,7 @@ export function getWeather(){
         if(data.status !== 200){
             document.body.style.overflow = 'hidden'
             document.getElementById('errWrapper').style.display = 'block'
+            document.getElementById('message').textContent = 'There is nothing found. Please check city name and try again.'
             throw Error(data.statusText);
         } else{
             setTimeout(()=>clearInterval(x),0)
