@@ -22,7 +22,7 @@ function getDayNightDuration(sunrise, sunset){
         dateset = new Date(unix_timestampset * 1000),
         dayHour = Math.floor(((dateset - daterise) / 3600 / 1000)),
         dayMinute = (((dateset - daterise) / 3600 / 1000 - dayHour) * 60).toFixed(0),
-        nightHour = 24 - dayHour,
+        nightHour = 23 - dayHour,
         nightMinute = 60 - dayMinute;
     return ([dayHour + getSpan('h') + dayMinute + getSpan('m'), 
             nightHour + getSpan('h') + nightMinute + getSpan('m')])
