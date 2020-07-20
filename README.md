@@ -1,2 +1,2 @@
-# daily-weather (HTML,CSS,JS)
+# weather-daily-forecast (HTML,CSS,JS)
 https://arshak-grigoryan.github.io/daily-weather/
